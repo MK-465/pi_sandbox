@@ -1,4 +1,4 @@
-from src.service.basic_service import DummyService
+from service.basic_service import DummyService
 
 
 def main():
