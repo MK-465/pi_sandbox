@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from controller.lcd.lcd_color_command import LcdColorCommand
+from controller.lcd.color.lcd_color_command import LcdColorCommand
 
 
 class LcdColorStateProvider(ABC):
