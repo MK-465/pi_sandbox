@@ -10,7 +10,7 @@ def main():
 
     lcd = GroveRGBLCD()
     lcd.setDefault()
-    print(f" SetDefault for: GroveRGBLCD")
+    print(f" SetDefault for: GroveRGBLCD!")
 
 
 if __name__ == "__main__":
