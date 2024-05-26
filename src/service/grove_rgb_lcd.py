@@ -2,11 +2,11 @@
 import time
 
 import RPi.GPIO as GPIO
-import pydevd_pycharm
 import smbus
 
-from controller.lcd.lcd_color_controller import LcdColorController
-from controller.lcd.lcd_solid_color_provider import LcdSolidColorProvider
+from controller.lcd.color.flash.lcd_flash_color_provider import LcdFlashColorProvider
+from controller.lcd.color.lcd_color_controller import LcdColorController
+from controller.lcd.color.solid.lcd_solid_color_provider import LcdSolidColorProvider
 
 DISPLAY_RGB_ADDR = 0x30
 DISPLAY_TEXT_ADDR = 0x3e
@@ -22,11 +22,13 @@ class GroveRGBLCD:
         self.bus = smbus.SMBus(1)
 
     def setRGB(self, r, g, b):
-        solid: LcdSolidColorProvider = LcdSolidColorProvider()
-        solid.set_rgb(r, g, b)
-
+        provider: LcdFlashColorProvider = LcdFlashColorProvider()
+        provider.set_rgb(r, g, b)
+        provider.set_flash_period(30)
+        provider.set_timer_pwm_1(50)
+        provider.set_rise_fall_time(15, 15)
         color_controller: LcdColorController = LcdColorController(DISPLAY_RGB_ADDR, self.bus)
-        color_controller.process(solid.lcd_color_command)
+        color_controller.process(provider.lcd_color_command)
 
     def textCommand(self, cmd):
         self.bus.write_byte_data(DISPLAY_TEXT_ADDR, 0x80, cmd)
@@ -90,7 +92,7 @@ class GroveRGBLCD:
 
     def setDefault(self):
         # break_point()
-        self.setText_norefresh("Hello World")
+        self.setText_norefresh("The rise of the sun :]")
         # self.setText_norefresh("KeyboardInterrupt")
-        self.setRGB(100, 10, 10)
+        self.setRGB(5, 5, 30)
         time.sleep(2)
