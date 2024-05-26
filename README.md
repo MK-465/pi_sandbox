@@ -7,6 +7,8 @@ This is a sandbox for the Raspberry Pi. It is a collection of scripts and progra
 * [pi_sandbox](#pi_sandbox)
     * [I2C address](#i2c-address)
     * [Remote debug](#remote-debug)
+  * [Items](#items)
+    * [1. Grove - LCD RGB Backlight](#1-grove---lcd-rgb-backlight)
 <!-- TOC -->
 
 
@@ -59,12 +61,14 @@ pydevd_pycharm.settrace('localhost', port=12345, stdoutToServer=True, stderrToSe
 Replace `'localhost'` with the IP address of your local machine (where PyCharm is running). Replace `12345` with a port number that is not being used on your local machine.
 
 3. In PyCharm, go to `Run > Edit Configurations`, click on the `+` button and select `Python Debug Server`. Enter a name for the configuration, the port number you used in `settrace()`, and check `Allow connections from network`.
-
 4. Click on the debug button (or press Shift+F9) to start the debug server.
-
 5. Run your Python application on the Raspberry Pi. It should connect to the debug server and stop at the line where you called `settrace()`.
 
 Now you can step through your code, inspect variables, and use all other debugging features of PyCharm.
+
+> [!NOTE]
+> Make sure that your Raspberry Pi and your local machine are on the same network and can communicate with each other.
+> </br> Using scripts: `./copy_to_remote.sh && ./run_remote.sh`
 
 ## Items
 ### 1. Grove - LCD RGB Backlight
