@@ -73,3 +73,29 @@ Now you can step through your code, inspect variables, and use all other debuggi
 ## Items
 ### 1. Grove - LCD RGB Backlight
 [Documentation](https://github.com/SeeedDocument/Grove_LCD_RGB_Backlight/blob/master/Grove-LCD_RGB_Backlight.md)
+
+#### 1.1. Display text
+```yml
+0x01: Clear display screen
+0x02: Return home
+0x04: Decrement cursor (shift cursor to left)
+0x06: Increment cursor (shift cursor to right)
+0x05: Shift display right
+0x07: Shift display left
+0x08: Display off, cursor off
+0x0A: Display off, cursor on
+0x0C: Display on, cursor off
+0x0E: Display on, cursor blinking
+0x0F: Display on, cursor blinking
+0x10: Shift cursor position to left
+0x14: Shift cursor position to right
+0x18: Shift the entire display to the left
+0x1C: Shift the entire display to the right
+0x80: Force cursor to beginning of 1st line
+0xC0: Force cursor to beginning of 2nd line
+0x40: Write data to CGRAM
+```
+
+#### 1.2. Display color
+
+
