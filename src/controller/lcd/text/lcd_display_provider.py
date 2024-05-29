@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from controller.lcd.display.lcd_display_command import LcdDisplayCommand
+from controller.lcd.text.lcd_display_command import LcdDisplayCommand
 
 
 class LcdDisplayProvider(ABC):
