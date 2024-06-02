@@ -1,12 +1,18 @@
 from abc import ABC
 
-from controller.lcd.text.lcd_display_provider import LcdDisplayProvider
+from controller.lcd.text.lcd_text_display_command import LcdTextDisplayCommand
+from controller.lcd.text.lcd_text_display_provider import LcdTextDisplayProvider
 
 
-class LcdTextStateProvider(LcdDisplayProvider, ABC):
+class LcdTextStateProvider(LcdTextDisplayProvider, ABC):
 
     def __init__(self):
         super().__init__()
+        self._lcd_display_command: LcdTextDisplayCommand = LcdTextDisplayCommand()
+
+    @property
+    def lcd_display_command(self) -> LcdTextDisplayCommand:
+        return self._lcd_display_command
 
     def clear_display(self):
         self._lcd_display_command.set_display_state(0x01)
@@ -14,13 +20,13 @@ class LcdTextStateProvider(LcdDisplayProvider, ABC):
     def return_home(self):
         self._lcd_display_command.set_display_state(0x02)
 
-    def display_on(self):
+    def display_off(self):
         self._lcd_display_command.set_display_state(0x08)
 
     def display_on_no_cursor(self):
         self._lcd_display_command.set_display_state(0x08 | 0x04)
 
-    def two_lines(self):
+    def enable_two_lines(self):
         self._lcd_display_command.set_display_state(0x28)
 
     def decrement_cursor(self):
@@ -64,6 +70,3 @@ class LcdTextStateProvider(LcdDisplayProvider, ABC):
 
     def force_cursor_to_beginning_second_line(self):
         self._lcd_display_command.set_display_state(0xC0)
-
-
-

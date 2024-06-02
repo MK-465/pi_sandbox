@@ -8,7 +8,7 @@ class LcdTextRegister(Enum):
     DISPLAY_TEXT_CONTROL = 0x40
 
 
-class LcdDisplayCommand(GroveCommand):
+class LcdTextDisplayCommand(GroveCommand):
 
     def __init__(self):
         super().__init__()
