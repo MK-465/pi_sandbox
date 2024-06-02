@@ -4,3 +4,4 @@ pyserial
 scipy
 smbus
 RPi.GPIO
+Adafruit_DHT

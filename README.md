@@ -9,6 +9,9 @@ This is a sandbox for the Raspberry Pi. It is a collection of scripts and progra
     * [Remote debug](#remote-debug)
   * [Items](#items)
     * [1. Grove - LCD RGB Backlight](#1-grove---lcd-rgb-backlight)
+      * [1.1. Display text](#11-display-text)
+      * [1.2. Display color](#12-display-color)
+    * [2. Grove - Temperature & Humidity Sensor (DHT11)](#2-grove---temperature--humidity-sensor-dht11)
 <!-- TOC -->
 
 
@@ -22,6 +25,20 @@ Press Enter.
 The command will return a grid of hex numbers. The numbers that are not -- are the addresses of devices connected to the I2C bus. If 0x62 (the address of DISPLAY_RGB_ADDR) is in the list, then the address is correct.  
 > !NOTE
 > Please note that you need to have i2c-tools installed to use i2cdetect. If it's not installed, you can install it with sudo apt-get install -y i2c-tools.
+
+> [!WARNING]
+> In case if i2c ports are not available, you can try to reload the i2c module.
+```shell
+sudo modprobe -r i2c_bcm2835  # remove the module
+sudo modprobe i2c_bcm2835  # reinsert the module
+```
+
+```shell
+1. Download and Upload di _i2c.py and di_mutex.py into Dexter/Grovepi/Software/Python folder
+2. Run sudo pip install python-periphery in terminal
+3. Run sudo pip install wiringpi in terminal
+4. Then run python di_i2c.py ,di_mutex.py, grovepi.py
+```
 
 * Check the I2C address in Python
 ```python
@@ -71,6 +88,8 @@ Now you can step through your code, inspect variables, and use all other debuggi
 > </br> Using scripts: `./copy_to_remote.sh && ./run_remote.sh`
 
 ## Items
+[GrovePi+](https://wiki.seeedstudio.com/GrovePi_Plus/)
+
 ### 1. Grove - LCD RGB Backlight
 [Documentation](https://github.com/SeeedDocument/Grove_LCD_RGB_Backlight/blob/master/Grove-LCD_RGB_Backlight.md)
 
@@ -97,5 +116,10 @@ Now you can step through your code, inspect variables, and use all other debuggi
 ```
 
 #### 1.2. Display color
+
+
+### 2. Grove - Temperature & Humidity Sensor (DHT11)
+[Documentation](https://wiki.seeedstudio.com/Grove-TemperatureAndHumidity_Sensor/)
+
 
 
